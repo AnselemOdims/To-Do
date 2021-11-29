@@ -77,4 +77,11 @@ export default class Helper {
   handleFocus() {
     document.querySelectorAll('li.list').forEach((item) => item.addEventListener('click', this.focusHandler));
   }
+
+  /**
+   * @function checkHandler - handles the checkbox change event
+   */
+  checkHandler() {
+    document.querySelectorAll('input[type="checkbox"]').forEach((item) => item.addEventListener('change', this.changeHandler));
+  }
 }
