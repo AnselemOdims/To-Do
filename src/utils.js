@@ -86,4 +86,19 @@ export default class Utils {
       this.change(val1.dataset.id, false);
     }
   }
+
+  /**
+   * @function load - the load function
+   * @param {Array} tasks - The tasks array
+   */
+  load(tasks) {
+    document.querySelectorAll('li.list').forEach((elem) => {
+      const task = tasks.find((item) => item.index === parseInt(elem.children[0].dataset.id, 10));
+      if (task.completed) {
+        const child = elem.children;
+        this.help('add', child[0], child[1], child[2]);
+        child[1].addEventListener('click', () => this.help('rem', child[0], child[1], child[2]));
+      }
+    });
+  }
 }
