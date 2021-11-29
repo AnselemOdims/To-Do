@@ -70,4 +70,11 @@ export default class Helper {
       utils.change(item.dataset.id, false);
     });
   }
+
+  /**
+   * @function handleFocus - This handles the focus on inputs
+   */
+  handleFocus() {
+    document.querySelectorAll('li.list').forEach((item) => item.addEventListener('click', this.focusHandler));
+  }
 }
