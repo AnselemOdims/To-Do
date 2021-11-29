@@ -10,9 +10,9 @@ export default class Helper {
   formHandler(e) {
     e.preventDefault();
     utils.add();
-    document.querySelector('.todo-list ul').innerHTML = '';
-    document.querySelector('.todo-list ul').insertAdjacentHTML('beforeend', utils.render());
     utils.clear();
+    this.checkHandler();
+    this.handleFocus();
   }
 
   /**
