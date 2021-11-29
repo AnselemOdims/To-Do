@@ -16,7 +16,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://anselemodims.github.io/To-Do/dist/)
+[Live Demo Link](https://anselemodims.github.io/To-Do/src/)
 
 
 ## Getting Started
@@ -60,4 +60,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.

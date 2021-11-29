@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-import task from './tasks.js';
 import Component from './component.js';
 
 export default class Utils {
@@ -7,20 +6,19 @@ export default class Utils {
    * @function render - instance class method
    * @returns - a list element formed from the component
    */
-  render() {
-    return task.map((item) => Component.list(item.description, item.index)).join('');
+  render(val, id) {
+    document.querySelector('.todo-list ul').insertAdjacentHTML('beforeend', Component.list(val, id));
   }
 
   /**
    * @function add - instance method that adds new todo to list
    */
   add() {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const todo = document.querySelector('#todo').value;
-    task.push({
-      description: `${todo}`,
-      completed: false,
-      index: task.length + 1,
-    });
+    this.pushControl(tasks, todo);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    this.render(todo, tasks.length);
   }
 
   /**
@@ -28,5 +26,79 @@ export default class Utils {
    */
   clear() {
     document.querySelector('#todo').value = '';
+  }
+
+  /**
+   * @function pushControl - helper method that pushes items into the tasks array
+   * @param {Array} tasks - The array collection of objects
+   * @param {String} todo - The todo description string
+   */
+  pushControl(tasks, todo) {
+    tasks.push({
+      description: `${todo}`,
+      completed: false,
+      index: tasks.length + 1,
+    });
+  }
+
+  /**
+   * @function change - Handles change in completed when checkbox is toggled
+   * @param {String} id - The data id of the task
+   * @param {Boolean} val - The value of completed
+   */
+  change(id, val) {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    const filtered = tasks.filter((item) => item.index !== parseInt(id, 10));
+    const task = tasks.find((item) => item.index === parseInt(id, 10));
+    task.completed = val;
+    filtered.splice(task.index - 1, 0, task);
+    localStorage.setItem('tasks', JSON.stringify(filtered));
+  }
+
+  /**
+   * @function tog - instance method that toggles CSS class
+   * @param  {...any} args - List of arguments
+   * @returns the toggling
+   */
+  tog(...args) {
+    if (args[0] === 'add') return args[2].classList.add(args[1]);
+    return args[2].classList.remove(args[1]);
+  }
+
+  /**
+   * @function help - Add and remove classes
+   * @param {String} type - checks if add or remove
+   * @param {HTML Element} val1 - the html element to add to or remove from
+   * @param {HTML Element} val2 - the html element to add to or remove from
+   * @param {HTML Element} val3 - the html element to add to or remove from
+   */
+  help(type, val1, val2, val3) {
+    if (type === 'add') {
+      this.tog('add', 'd-none', val1);
+      this.tog('rem', 'd-none', val2);
+      this.tog('add', 'strike', val3);
+      this.change(val1.dataset.id, true);
+    }
+    if (type === 'rem') {
+      this.tog('rem', 'd-none', val1);
+      this.tog('add', 'd-none', val2);
+      this.tog('rem', 'strike', val3);
+      this.change(val1.dataset.id, false);
+    }
+  }
+
+  /**
+   * @function load - the load function
+   * @param {Array} tasks - The tasks array
+   */
+  load(tasks) {
+    document.querySelectorAll('li.list').forEach((elem) => {
+      const task = tasks.find((item) => item.index === parseInt(elem.children[0].dataset.id, 10));
+      if (task.completed) {
+        const child = elem.children;
+        this.help('add', child[0], child[1], child[2]);
+        child[1].addEventListener('click', () => this.help('rem', child[0], child[1], child[2]));
+      }
+    });
   }
 }
