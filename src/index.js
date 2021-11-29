@@ -1,1 +1,1 @@
-document.querySelector('h2').innerText = 'JSON, my guy';
+import './style.css';

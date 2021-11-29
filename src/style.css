@@ -1,0 +1,180 @@
+/* Google font import */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,400;1,500&display=swap');
+
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+  --primary-color: rgb(64, 64, 240);
+  --accent-color: #333;
+  --neutral-color-1: #f5f4f4;
+  --neutral-color-2: #989998;
+  --neutral-color-3: #f7f7f6;
+  --neutral-color-4: #adacac;
+  --white: #fff;
+  --font: raleway, sans-serif;
+}
+
+/* Global styles */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-size: 16px;
+  font-family: var(--font);
+  background: var(--neutral-color-3);
+  position: relative;
+}
+
+ul > li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+/* Card Styles */
+.main-container {
+  background-color: var(--white);
+  margin: 10% auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.form-container,
+.list {
+  display: flex;
+  padding: 5px 20px 5px 15px;
+  align-items: center;
+}
+
+form {
+  width: 100%;
+}
+
+form > input {
+  width: 95%;
+  border: none;
+  height: 40px;
+  font-size: 17px;
+}
+
+form > input:focus {
+  outline: none;
+  background: var(--white);
+}
+
+form > input::placeholder {
+  font-family: var(--font);
+  font-style: italic;
+  font-weight: 100;
+}
+
+.enter {
+  transform: rotate(90deg);
+}
+
+.bottom {
+  border-bottom: solid 2px var(--neutral-color-1);
+}
+
+.clear {
+  padding: 15px;
+  background: var(--neutral-color-3);
+  text-align: center;
+}
+
+.clear > a {
+  color: var(--neutral-color-4);
+}
+
+.clear > a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.fas {
+  color: var(--neutral-color-2);
+  font-size: 14px;
+}
+
+.fas:hover {
+  color: var(--accent-color);
+}
+
+.list {
+  width: 100%;
+}
+
+.list > img {
+  width: 26px;
+}
+
+.list .fas {
+  font-size: 17px;
+}
+
+.list > input[type="text"] {
+  width: 100%;
+  margin: 0 10px;
+  border: none;
+  height: 40px;
+  font-size: 17px;
+}
+
+.list > input[type="text"]:focus {
+  outline: none;
+}
+
+.list > input[type="checkbox"] {
+  height: 30px;
+  width: 20px;
+  cursor: pointer;
+  outline: none;
+}
+
+.list > input[type="checkbox" i]:checked {
+  background: red;
+}
+
+.d-none {
+  display: none;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.focus {
+  background: #fcffa6;
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  -webkit-animation: rotate 1s;
+  -moz-animation: rotate 1s;
+  animation: rotate 1s;
+}
