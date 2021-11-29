@@ -48,4 +48,26 @@ export default class Helper {
     utils.tog('rem', 'd-none', child[4]);
     item.classList.add('focus');
   }
+
+  /**
+   *
+   * @function changeHandler - handles the change on the checkbox
+   * @param {Event Object} e - The current event
+   */
+  changeHandler(e) {
+    const item = e.target;
+    const parent = item.parentElement;
+    const child = parent.children;
+    utils.tog('add', 'd-none', item);
+    utils.tog('add', 'strike', child[2]);
+    utils.tog('rem', 'd-none', child[1]);
+    utils.change(item.dataset.id, true);
+    child[1].addEventListener('click', (e) => {
+      utils.tog('rem', 'strike', child[2]);
+      utils.tog('add', 'd-none', e.target);
+      utils.tog('rem', 'd-none', item);
+      item.checked = false;
+      utils.change(item.dataset.id, false);
+    });
+  }
 }
