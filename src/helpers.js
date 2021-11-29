@@ -25,7 +25,9 @@ export default class Helper {
       utils.render(description, index);
       document.querySelector('#todo').focus();
       this.checkHandler();
+      this.handleFocus();
     });
+    utils.load(tasks);
   }
 
   /**
