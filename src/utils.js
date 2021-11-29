@@ -64,4 +64,26 @@ export default class Utils {
     if (args[0] === 'add') return args[2].classList.add(args[1]);
     return args[2].classList.remove(args[1]);
   }
+
+  /**
+   * @function help - Add and remove classes
+   * @param {String} type - checks if add or remove
+   * @param {HTML Element} val1 - the html element to add to or remove from
+   * @param {HTML Element} val2 - the html element to add to or remove from
+   * @param {HTML Element} val3 - the html element to add to or remove from
+   */
+  help(type, val1, val2, val3) {
+    if (type === 'add') {
+      this.tog('add', 'd-none', val1);
+      this.tog('rem', 'd-none', val2);
+      this.tog('add', 'strike', val3);
+      this.change(val1.dataset.id, true);
+    }
+    if (type === 'rem') {
+      this.tog('rem', 'd-none', val1);
+      this.tog('add', 'd-none', val2);
+      this.tog('rem', 'strike', val3);
+      this.change(val1.dataset.id, false);
+    }
+  }
 }
