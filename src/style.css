@@ -79,6 +79,7 @@ form > input {
   border: none;
   height: 40px;
   font-size: 17px;
+  font-family: var(--font);
 }
 
 form > input:focus {
