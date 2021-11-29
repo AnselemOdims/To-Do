@@ -29,4 +29,17 @@ export default class Utils {
   clear() {
     document.querySelector('#todo').value = '';
   }
+
+  /**
+   * @function pushControl - helper method that pushes items into the tasks array
+   * @param {Array} tasks - The array collection of objects
+   * @param {String} todo - The todo description string
+   */
+  pushControl(tasks, todo) {
+    tasks.push({
+      description: `${todo}`,
+      completed: false,
+      index: tasks.length + 1,
+    });
+  }
 }
