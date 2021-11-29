@@ -42,4 +42,18 @@ export default class Utils {
       index: tasks.length + 1,
     });
   }
+
+  /**
+   * @function change - Handles change in completed when checkbox is toggled
+   * @param {String} id - The data id of the task
+   * @param {Boolean} val - The value of completed
+   */
+  change(id, val) {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    const filtered = tasks.filter((item) => item.index !== parseInt(id, 10));
+    const task = tasks.find((item) => item.index === parseInt(id, 10));
+    task.completed = val;
+    filtered.splice(task.index - 1, 0, task);
+    localStorage.setItem('tasks', JSON.stringify(filtered));
+  }
 }
