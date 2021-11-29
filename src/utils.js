@@ -22,4 +22,11 @@ export default class Utils {
       index: task.length + 1,
     });
   }
+
+  /**
+   * @function add - instance method that clears input on add
+   */
+  clear() {
+    document.querySelector('#todo').value = '';
+  }
 }
