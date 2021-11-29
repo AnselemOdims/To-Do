@@ -7,6 +7,6 @@ const utils = new Utils();
 
 window.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.todo-list ul').innerHTML = utils.render();
-  document.querySelector('form').addEventListener('submit', () => helper.formHandler());
-  document.querySelector('.enter').addEventListener('click', () => helper.formHandler());
+  document.querySelector('form').addEventListener('submit', (e) => helper.formHandler(e));
+  document.querySelector('.enter').addEventListener('click', (e) => helper.formHandler(e));
 });

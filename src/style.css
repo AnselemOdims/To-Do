@@ -1,5 +1,5 @@
 /* Google font import */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,800;1,100;1,200;1,300;1,400;1,600;1,700&display=swap');
 
 /* Reset Styles */
 * {
@@ -17,7 +17,7 @@
   --neutral-color-3: #f7f7f6;
   --neutral-color-4: #adacac;
   --white: #fff;
-  --font: raleway, sans-serif;
+  --font: 'Poppins', sans-serif;
 }
 
 /* Global styles */
@@ -56,6 +56,11 @@ a {
   display: flex;
   justify-content: space-between;
   padding: 15px;
+}
+
+.title > p {
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .form-container,
@@ -131,12 +136,13 @@ form > input::placeholder {
   font-size: 17px;
 }
 
-.list > input[type="text"] {
+.list > input[type="text"].input-value {
   width: 100%;
   margin: 0 10px;
   border: none;
   height: 40px;
-  font-size: 17px;
+  font-size: 1rem;
+  font-family: var(--font);
 }
 
 .list > input[type="text"]:focus {
