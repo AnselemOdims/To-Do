@@ -56,4 +56,14 @@ export default class Utils {
     filtered.splice(task.index - 1, 0, task);
     localStorage.setItem('tasks', JSON.stringify(filtered));
   }
+
+  /**
+   * @function tog - instance method that toggles CSS class
+   * @param  {...any} args - List of arguments
+   * @returns the toggling
+   */
+  tog(...args) {
+    if (args[0] === 'add') return args[2].classList.add(args[1]);
+    return args[2].classList.remove(args[1]);
+  }
 }
