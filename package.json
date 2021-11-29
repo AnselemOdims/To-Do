@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AnselemOdims/To-Do/issues"
   },
-  "homepage": "https://github.com/AnselemOdims/To-Do#readme"
+  "homepage": "https://github.com/AnselemOdims/To-Do#readme",
+  "devDependencies": {
+    "hint": "^6.1.9"
+  }
 }
