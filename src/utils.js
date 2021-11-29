@@ -10,4 +10,16 @@ export default class Utils {
   render() {
     return task.map((item) => Component.list(item.description, item.index)).join('');
   }
+
+  /**
+   * @function add - instance method that adds new todo to list
+   */
+  add() {
+    const todo = document.querySelector('#todo').value;
+    task.push({
+      description: `${todo}`,
+      completed: false,
+      index: task.length + 1,
+    });
+  }
 }
