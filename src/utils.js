@@ -113,4 +113,29 @@ export default class Utils {
       });
     });
   }
+
+  /**
+   * @function delete - Deletes an item(s) from the list
+   * @param {any} val - A boolean or string
+   */
+  static delete(val) {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    let remTasks;
+    if (typeof val === 'string') {
+      remTasks = tasks.filter((item) => item.index !== parseInt(val, 10));
+    } else {
+      remTasks = tasks.filter((item) => item.completed === val);
+    }
+    localStorage.removeItem('tasks');
+    const todos = JSON.parse(localStorage.getItem('tasks')) || [];
+    remTasks.forEach((item) => {
+      const { description, completed } = item;
+      if (completed) {
+        Utils.pushControl(todos, description, true);
+      } else {
+        Utils.pushControl(todos, description);
+      }
+    });
+    localStorage.setItem('tasks', JSON.stringify(todos));
+  }
 }
