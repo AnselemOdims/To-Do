@@ -10,7 +10,7 @@
 
 /* Variables */
 :root {
-  --primary-color: rgb(64, 64, 240);
+  --primary-color: #88e0ef;
   --accent-color: #333;
   --neutral-color-1: #f5f4f4;
   --neutral-color-2: #989998;
@@ -28,7 +28,7 @@ html {
 body {
   font-size: 16px;
   font-family: var(--font);
-  background: var(--neutral-color-3);
+  background: var(--primary-color);
   position: relative;
 }
 
@@ -82,9 +82,10 @@ form > input {
   font-family: var(--font);
 }
 
-form > input:focus {
+form > input:focus:not(.list form > input) {
   outline: none;
   background: var(--white);
+  border: none;
 }
 
 form > input::placeholder {
@@ -137,7 +138,12 @@ form > input::placeholder {
   font-size: 17px;
 }
 
-.list > input[type="text"].input-value {
+.list .fas.drag {
+  font-size: 17px;
+  cursor: move;
+}
+
+.list > form > input[type="text"].input-value {
   width: 100%;
   margin: 0 10px;
   border: none;
@@ -146,18 +152,18 @@ form > input::placeholder {
   font-family: var(--font);
 }
 
-.list > input[type="text"]:focus {
+.list > form > input[type="text"]:focus {
   outline: none;
 }
 
-.list > input[type="checkbox"] {
+.list > form > input[type="checkbox"] {
   height: 30px;
   width: 20px;
   cursor: pointer;
   outline: none;
 }
 
-.list > input[type="checkbox" i]:checked {
+.list > form > input[type="checkbox" i]:checked {
   background: red;
 }
 
@@ -167,10 +173,15 @@ form > input::placeholder {
 
 .strike {
   text-decoration: line-through;
+  color: green;
 }
 
 .focus {
   background: #fcffa6;
+}
+
+.fa-trash-alt:hover {
+  color: red;
 }
 
 @keyframes rotate {

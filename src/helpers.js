@@ -1,54 +1,58 @@
-/* eslint-disable class-methods-use-this */
+/* eslint-disable import/no-cycle */
 import Utils from './utils.js';
-
-const utils = new Utils();
 
 export default class Helper {
   /**
    * @function formHandler - instance method for handling of form submission
    */
-  formHandler(e) {
+  static formHandler(e) {
     e.preventDefault();
-    utils.add();
-    utils.clear();
-    this.checkHandler();
-    this.handleFocus();
+    Utils.add();
+    Utils.clear();
+    Helper.checkHandler();
+    Helper.handleFocus();
   }
 
   /**
    * @function display - this helps to display the list on load
    */
-  display() {
+  static display() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.forEach((item) => {
       const { description, index } = item;
-      utils.render(description, index);
+      Utils.render(description, index);
       document.querySelector('#todo').focus();
-      this.checkHandler();
-      this.handleFocus();
+      Helper.checkHandler();
+      Helper.handleFocus();
     });
-    utils.load(tasks);
+    Utils.load(tasks);
+    Utils.edit();
   }
 
   /**
    * @function focusHandler - handles the focus on the inputs
    * @param {Event Object} e - The current event
    */
-  focusHandler(e) {
+  static focusHandler(e) {
     const item = e.currentTarget;
     const child = item.children;
+    const input = child[2].firstElementChild;
     if (document.querySelector('li.list.focus')) {
       const parent = document.querySelector('li.list.focus');
-      parent.children[2].classList.remove('focus');
+      parent.children[2].firstElementChild.classList.remove('focus');
       parent.children[3].classList.remove('d-none');
       parent.children[4].classList.add('d-none');
       parent.classList.remove('focus');
     }
-    child[2].focus();
-    utils.tog('add', 'focus', child[2]);
-    utils.tog('add', 'd-none', child[3]);
-    utils.tog('rem', 'd-none', child[4]);
+    input.focus();
+    Utils.tog('add', 'focus', input);
+    Utils.tog('add', 'd-none', child[3]);
+    Utils.tog('rem', 'd-none', child[4]);
     item.classList.add('focus');
+    item.querySelector('#delete .far').addEventListener('click', (e) => {
+      e.preventDefault();
+      Utils.remove(e, e.currentTarget.dataset.id);
+    });
   }
 
   /**
@@ -56,13 +60,15 @@ export default class Helper {
    * @function changeHandler - handles the change on the checkbox
    * @param {Event Object} e - The current event
    */
-  changeHandler(e) {
+  static changeHandler(e) {
     const item = e.target;
     const parent = item.parentElement;
     const child = parent.children;
-    utils.help('add', item, child[1], child[2]);
+    Utils.help('add', item, child[1], child[2].firstElementChild);
+    document.querySelector('.todo-list ul').innerHTML = '';
+    Helper.display();
     child[1].addEventListener('click', () => {
-      utils.help('rem', item, child[1], child[2]);
+      Utils.help('rem', item, child[1], child[2].firstElementChild);
       item.checked = false;
     });
   }
@@ -70,14 +76,14 @@ export default class Helper {
   /**
    * @function handleFocus - This handles the focus on inputs
    */
-  handleFocus() {
-    document.querySelectorAll('li.list').forEach((item) => item.addEventListener('click', this.focusHandler));
+  static handleFocus() {
+    document.querySelectorAll('li.list').forEach((item) => item.addEventListener('click', Helper.focusHandler));
   }
 
   /**
    * @function checkHandler - handles the checkbox change event
    */
-  checkHandler() {
-    document.querySelectorAll('input[type="checkbox"]').forEach((item) => item.addEventListener('change', this.changeHandler));
+  static checkHandler() {
+    document.querySelectorAll('input[type="checkbox"]').forEach((item) => item.addEventListener('change', Helper.changeHandler));
   }
 }
