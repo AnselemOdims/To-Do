@@ -34,6 +34,20 @@ export default class Utils {
   }
 
   /**
+ * @function clearAll - This handles removing all completed items from the list
+ */
+  static clearAll() {
+    Utils.delete(false);
+    document.querySelectorAll('li.list input[type="checkbox"]').forEach((item) => {
+      if (item.classList.contains('d-none')) {
+        item.remove();
+      }
+    });
+    document.querySelector('.todo-list ul').innerHTML = '';
+    Helper.display();
+  }
+
+  /**
    * @function add - instance method that clears input on add
    */
   clear() {
