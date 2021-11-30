@@ -10,7 +10,7 @@
 
 /* Variables */
 :root {
-  --primary-color: rgb(64, 64, 240);
+  --primary-color: #88e0ef;
   --accent-color: #333;
   --neutral-color-1: #f5f4f4;
   --neutral-color-2: #989998;
@@ -28,7 +28,7 @@ html {
 body {
   font-size: 16px;
   font-family: var(--font);
-  background: var(--neutral-color-3);
+  background: var(--primary-color);
   position: relative;
 }
 
@@ -135,6 +135,11 @@ form > input::placeholder {
 
 .list .fas {
   font-size: 17px;
+}
+
+.list .fas.drag {
+  font-size: 17px;
+  cursor: move;
 }
 
 .list > input[type="text"].input-value {
