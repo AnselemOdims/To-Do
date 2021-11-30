@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-/* eslint-disable class-methods-use-this */
+import Helper from './helpers.js';
 import Component from './component.js';
 
 export default class Utils {

@@ -1,18 +1,16 @@
 /* eslint-disable class-methods-use-this */
 import Utils from './utils.js';
 
-const utils = new Utils();
-
 export default class Helper {
   /**
    * @function formHandler - instance method for handling of form submission
    */
-  formHandler(e) {
+  static formHandler(e) {
     e.preventDefault();
-    utils.add();
-    utils.clear();
-    this.checkHandler();
-    this.handleFocus();
+    Utils.addLocal();
+    Utils.clear();
+    Helper.checkHandler();
+    Helper.handleFocus();
   }
 
   /**
