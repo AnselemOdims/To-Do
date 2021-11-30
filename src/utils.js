@@ -51,7 +51,7 @@ export default class Utils {
   /**
    * @function add - instance method that clears input on add
    */
-  clear() {
+  static clear() {
     document.querySelector('#todo').value = '';
   }
 
@@ -60,10 +60,10 @@ export default class Utils {
    * @param {Array} tasks - The array collection of objects
    * @param {String} todo - The todo description string
    */
-  pushControl(tasks, todo) {
+  static pushControl(tasks, todo, completed = false) {
     tasks.push({
       description: `${todo}`,
-      completed: false,
+      completed,
       index: tasks.length + 1,
     });
   }
