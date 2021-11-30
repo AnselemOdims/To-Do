@@ -71,8 +71,8 @@ export default class Helper {
   /**
    * @function handleFocus - This handles the focus on inputs
    */
-  handleFocus() {
-    document.querySelectorAll('li.list').forEach((item) => item.addEventListener('click', this.focusHandler));
+  static handleFocus() {
+    document.querySelectorAll('li.list').forEach((item) => item.addEventListener('click', Helper.focusHandler));
   }
 
   /**
