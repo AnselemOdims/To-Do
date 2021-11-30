@@ -82,9 +82,10 @@ form > input {
   font-family: var(--font);
 }
 
-form > input:focus {
+form > input:focus:not(.list form > input) {
   outline: none;
   background: var(--white);
+  border: none;
 }
 
 form > input::placeholder {
@@ -142,7 +143,7 @@ form > input::placeholder {
   cursor: move;
 }
 
-.list > input[type="text"].input-value {
+.list > form > input[type="text"].input-value {
   width: 100%;
   margin: 0 10px;
   border: none;
@@ -151,18 +152,18 @@ form > input::placeholder {
   font-family: var(--font);
 }
 
-.list > input[type="text"]:focus {
+.list > form > input[type="text"]:focus {
   outline: none;
 }
 
-.list > input[type="checkbox"] {
+.list > form > input[type="checkbox"] {
   height: 30px;
   width: 20px;
   cursor: pointer;
   outline: none;
 }
 
-.list > input[type="checkbox" i]:checked {
+.list > form > input[type="checkbox" i]:checked {
   background: red;
 }
 
@@ -172,10 +173,15 @@ form > input::placeholder {
 
 .strike {
   text-decoration: line-through;
+  color: green;
 }
 
 .focus {
   background: #fcffa6;
+}
+
+.fa-trash-alt:hover {
+  color: red;
 }
 
 @keyframes rotate {

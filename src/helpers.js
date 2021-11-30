@@ -1,4 +1,4 @@
-/* eslint-disable class-methods-use-this */
+/* eslint-disable import/no-cycle */
 import Utils from './utils.js';
 
 export default class Helper {
@@ -7,7 +7,7 @@ export default class Helper {
    */
   static formHandler(e) {
     e.preventDefault();
-    Utils.addLocal();
+    Utils.add();
     Utils.clear();
     Helper.checkHandler();
     Helper.handleFocus();
@@ -45,9 +45,9 @@ export default class Helper {
       parent.classList.remove('focus');
     }
     input.focus();
-    Utils.togClass('add', 'focus', input);
-    Utils.togClass('add', 'd-none', child[3]);
-    Utils.togClass('rem', 'd-none', child[4]);
+    Utils.tog('add', 'focus', input);
+    Utils.tog('add', 'd-none', child[3]);
+    Utils.tog('rem', 'd-none', child[4]);
     item.classList.add('focus');
     item.querySelector('#delete .far').addEventListener('click', (e) => Utils.remove(e, e.currentTarget.dataset.id));
   }
@@ -62,7 +62,7 @@ export default class Helper {
     const parent = item.parentElement;
     const child = parent.children;
     Utils.help('add', item, child[1], child[2].firstElementChild);
-    child[1].addEventListener('click', (e) => {
+    child[1].addEventListener('click', () => {
       Utils.help('rem', item, child[1], child[2].firstElementChild);
       item.checked = false;
     });

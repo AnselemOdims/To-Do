@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-expressions */
 import Helper from './helpers.js';
 import Component from './component.js';
@@ -102,15 +103,15 @@ export default class Utils {
    */
   static help(type, val1, val2, val3) {
     if (type === 'add') {
-      Utils.togClass('add', 'd-none', val1);
-      Utils.togClass('rem', 'd-none', val2);
-      Utils.togClass('add', 'strike', val3);
+      Utils.tog('add', 'd-none', val1);
+      Utils.tog('rem', 'd-none', val2);
+      Utils.tog('add', 'strike', val3);
       Utils.change(val1.dataset.id, true);
     }
     if (type === 'rem') {
-      Utils.togClass('rem', 'd-none', val1);
-      Utils.togClass('add', 'd-none', val2);
-      Utils.togClass('rem', 'strike', val3);
+      Utils.tog('rem', 'd-none', val1);
+      Utils.tog('add', 'd-none', val2);
+      Utils.tog('rem', 'strike', val3);
       Utils.change(val1.dataset.id, false);
     }
   }
