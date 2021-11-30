@@ -16,16 +16,17 @@ export default class Helper {
   /**
    * @function display - this helps to display the list on load
    */
-  display() {
+  static display() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.forEach((item) => {
       const { description, index } = item;
-      utils.render(description, index);
+      Utils.render(description, index);
       document.querySelector('#todo').focus();
-      this.checkHandler();
-      this.handleFocus();
+      Helper.checkHandler();
+      Helper.handleFocus();
     });
-    utils.load(tasks);
+    Utils.load(tasks);
+    Utils.edit();
   }
 
   /**
