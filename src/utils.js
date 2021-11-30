@@ -101,4 +101,16 @@ export default class Utils {
       }
     });
   }
+
+  /**
+   * @function edit - Edits the todo and push changes to localStorage
+   */
+  static edit() {
+    document.querySelectorAll('.list form').forEach((form) => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        Utils.change(e.target.dataset.id, e.target.firstElementChild.value);
+      });
+    });
+  }
 }
