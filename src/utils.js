@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable class-methods-use-this */
 import Component from './component.js';
 
@@ -6,7 +7,7 @@ export default class Utils {
    * @function render - instance class method
    * @returns - a list element formed from the component
    */
-  render(val, id) {
+  static render(val, id) {
     document.querySelector('.todo-list ul').insertAdjacentHTML('beforeend', Component.list(val, id));
   }
 
@@ -73,11 +74,11 @@ export default class Utils {
    * @param {String} id - The data id of the task
    * @param {Boolean} val - The value of completed
    */
-  change(id, val) {
+  static change(id, val) {
     const tasks = JSON.parse(localStorage.getItem('tasks'));
     const filtered = tasks.filter((item) => item.index !== parseInt(id, 10));
     const task = tasks.find((item) => item.index === parseInt(id, 10));
-    task.completed = val;
+    typeof val === 'boolean' ? task.completed = val : task.description = val;
     filtered.splice(task.index - 1, 0, task);
     localStorage.setItem('tasks', JSON.stringify(filtered));
   }
