@@ -6,8 +6,8 @@ export default class Component {
     return `
     <li class="list" draggable="true">
     <input type="checkbox" id="check" data-id=${id}><img src=${check} alt="checked icon" class="d-none" data-id=${id}>
-    <form data-id=${id}>
-    <input type="text" class="input-value" value='${val}'>
+    <form>
+    <input type="text" class="input-value" value='${val}' data-id=${id}>
     </form>
     <a><i class="fas fa-ellipsis-v drag"></i></a>
     <a class="d-none"  id="delete"><i class="far fa-trash-alt" data-id=${id}></i></a>

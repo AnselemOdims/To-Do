@@ -1,5 +1,4 @@
 /* eslint-disable import/no-cycle */
-/* eslint-disable no-unused-expressions */
 import Helper from './helpers.js';
 import Component from './component.js';
 
@@ -79,7 +78,11 @@ export default class Utils {
     const tasks = JSON.parse(localStorage.getItem('tasks'));
     const filtered = tasks.filter((item) => item.index !== parseInt(id, 10));
     const task = tasks.find((item) => item.index === parseInt(id, 10));
-    typeof val === 'boolean' ? task.completed = val : task.description = val;
+    if (typeof val === 'boolean') {
+      task.completed = val;
+    } else {
+      task.description = val;
+    }
     filtered.splice(task.index - 1, 0, task);
     localStorage.setItem('tasks', JSON.stringify(filtered));
   }
@@ -135,10 +138,10 @@ export default class Utils {
    * @function edit - Edits the todo and push changes to localStorage
    */
   static edit() {
-    document.querySelectorAll('.list form').forEach((form) => {
-      form.addEventListener('submit', (e) => {
+    document.querySelectorAll('.list form input').forEach((input) => {
+      input.addEventListener('change', (e) => {
         e.preventDefault();
-        Utils.change(e.target.dataset.id, e.target.firstElementChild.value);
+        Utils.change(e.target.dataset.id, e.target.value);
       });
     });
   }
