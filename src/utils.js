@@ -22,6 +22,18 @@ export default class Utils {
   }
 
   /**
+   * @function remove - The remove function to remove a list item
+   * @param {Event Object} e - The event object
+   * @param {*} id - The id of the item
+   */
+  static remove(e, id) {
+    Utils.delete(id);
+    e.currentTarget.closest('ul > li').remove();
+    document.querySelector('.todo-list ul').innerHTML = '';
+    Helper.display();
+  }
+
+  /**
    * @function add - instance method that clears input on add
    */
   clear() {
