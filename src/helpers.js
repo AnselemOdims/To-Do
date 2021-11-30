@@ -57,13 +57,13 @@ export default class Helper {
    * @function changeHandler - handles the change on the checkbox
    * @param {Event Object} e - The current event
    */
-  changeHandler(e) {
+  static changeHandler(e) {
     const item = e.target;
     const parent = item.parentElement;
     const child = parent.children;
-    utils.help('add', item, child[1], child[2]);
-    child[1].addEventListener('click', () => {
-      utils.help('rem', item, child[1], child[2]);
+    Utils.help('add', item, child[1], child[2].firstElementChild);
+    child[1].addEventListener('click', (e) => {
+      Utils.help('rem', item, child[1], child[2].firstElementChild);
       item.checked = false;
     });
   }
