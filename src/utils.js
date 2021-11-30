@@ -13,12 +13,13 @@ export default class Utils {
   /**
    * @function add - instance method that adds new todo to list
    */
-  add() {
+  static add() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const todo = document.querySelector('#todo').value;
-    this.pushControl(tasks, todo);
+    Utils.pushControl(tasks, todo);
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    this.render(todo, tasks.length);
+    Utils.render(todo, tasks.length);
+    Utils.edit();
   }
 
   /**
