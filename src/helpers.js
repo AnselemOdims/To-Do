@@ -78,7 +78,7 @@ export default class Helper {
   /**
    * @function checkHandler - handles the checkbox change event
    */
-  checkHandler() {
-    document.querySelectorAll('input[type="checkbox"]').forEach((item) => item.addEventListener('change', this.changeHandler));
+  static checkHandler() {
+    document.querySelectorAll('input[type="checkbox"]').forEach((item) => item.addEventListener('change', Helper.changeHandler));
   }
 }
