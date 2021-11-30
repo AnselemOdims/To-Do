@@ -16,7 +16,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://anselemodims.github.io/To-Do/src/)
+[Live Demo Link](https://anselemodims.github.io/To-Do/dist/)
 
 
 ## Getting Started
