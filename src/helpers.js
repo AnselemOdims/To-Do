@@ -33,21 +33,23 @@ export default class Helper {
    * @function focusHandler - handles the focus on the inputs
    * @param {Event Object} e - The current event
    */
-  focusHandler(e) {
+  static focusHandler(e) {
     const item = e.currentTarget;
     const child = item.children;
+    const input = child[2].firstElementChild;
     if (document.querySelector('li.list.focus')) {
       const parent = document.querySelector('li.list.focus');
-      parent.children[2].classList.remove('focus');
+      parent.children[2].firstElementChild.classList.remove('focus');
       parent.children[3].classList.remove('d-none');
       parent.children[4].classList.add('d-none');
       parent.classList.remove('focus');
     }
-    child[2].focus();
-    utils.tog('add', 'focus', child[2]);
-    utils.tog('add', 'd-none', child[3]);
-    utils.tog('rem', 'd-none', child[4]);
+    input.focus();
+    Utils.togClass('add', 'focus', input);
+    Utils.togClass('add', 'd-none', child[3]);
+    Utils.togClass('rem', 'd-none', child[4]);
     item.classList.add('focus');
+    item.querySelector('#delete .far').addEventListener('click', (e) => Utils.remove(e, e.currentTarget.dataset.id));
   }
 
   /**
