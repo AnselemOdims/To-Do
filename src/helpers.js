@@ -49,7 +49,10 @@ export default class Helper {
     Utils.tog('add', 'd-none', child[3]);
     Utils.tog('rem', 'd-none', child[4]);
     item.classList.add('focus');
-    item.querySelector('#delete .far').addEventListener('click', (e) => Utils.remove(e, e.currentTarget.dataset.id));
+    item.querySelector('#delete .far').addEventListener('click', (e) => {
+      e.preventDefault();
+      Utils.remove(e, e.currentTarget.dataset.id);
+    });
   }
 
   /**
@@ -62,6 +65,8 @@ export default class Helper {
     const parent = item.parentElement;
     const child = parent.children;
     Utils.help('add', item, child[1], child[2].firstElementChild);
+    document.querySelector('.todo-list ul').innerHTML = '';
+    Helper.display();
     child[1].addEventListener('click', () => {
       Utils.help('rem', item, child[1], child[2].firstElementChild);
       item.checked = false;

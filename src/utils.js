@@ -142,6 +142,8 @@ export default class Utils {
       input.addEventListener('change', (e) => {
         e.preventDefault();
         Utils.change(e.target.dataset.id, e.target.value);
+        document.querySelector('.todo-list ul').innerHTML = '';
+        Helper.display();
       });
     });
   }
