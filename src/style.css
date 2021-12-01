@@ -196,3 +196,9 @@ form > input::placeholder {
   -moz-animation: rotate 1s;
   animation: rotate 1s;
 }
+
+@media (max-width: 480px) {
+  .main-container {
+    width: 90%;
+  }
+}
