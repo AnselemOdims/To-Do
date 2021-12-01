@@ -202,3 +202,9 @@ form > input::placeholder {
     width: 90%;
   }
 }
+
+@media (max-width: 768px) and (min-width: 481px) {
+  .main-container {
+    width: 80%;
+  }
+}
