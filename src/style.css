@@ -156,15 +156,11 @@ form > input::placeholder {
   outline: none;
 }
 
-.list > form > input[type="checkbox"] {
+.list > input[type="checkbox"] {
   height: 30px;
   width: 20px;
   cursor: pointer;
   outline: none;
-}
-
-.list > form > input[type="checkbox" i]:checked {
-  background: red;
 }
 
 .d-none {
@@ -195,4 +191,34 @@ form > input::placeholder {
   -webkit-animation: rotate 1s;
   -moz-animation: rotate 1s;
   animation: rotate 1s;
+}
+
+@keyframes slide-top {
+  from {
+    top: -800px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.animate-top {
+  position: relative;
+  animation: slide-top ease-out 1.2s;
+  border: solid 2px green;
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+  .main-container {
+    width: 80%;
+  }
 }

@@ -20,6 +20,7 @@ export default class Utils {
     Utils.pushControl(tasks, todo);
     localStorage.setItem('tasks', JSON.stringify(tasks));
     Utils.render(todo, tasks.length);
+    Utils.animate(tasks);
     Utils.edit();
   }
 
@@ -176,5 +177,16 @@ export default class Utils {
       }
     });
     localStorage.setItem('tasks', JSON.stringify(todos));
+  }
+
+  /**
+ * @function animate - animate each list item
+ * @param {Array} tasks - The array of tasks
+ */
+  static animate(tasks) {
+    document.querySelectorAll('li.list').forEach((item) => {
+      if (parseInt(item.dataset.id, 10) === tasks.length) item.classList.add('animate-top');
+      setTimeout(() => { item.classList.remove('animate-top'); }, 1100);
+    });
   }
 }
