@@ -156,15 +156,11 @@ form > input::placeholder {
   outline: none;
 }
 
-.list > form > input[type="checkbox"] {
+.list > input[type="checkbox"] {
   height: 30px;
   width: 20px;
   cursor: pointer;
   outline: none;
-}
-
-.list > form > input[type="checkbox" i]:checked {
-  background: red;
 }
 
 .d-none {
