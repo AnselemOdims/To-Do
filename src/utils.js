@@ -17,6 +17,7 @@ export default class Utils {
   static add() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const todo = document.querySelector('#todo').value;
+    if (todo === '') return;
     Utils.pushControl(tasks, todo);
     localStorage.setItem('tasks', JSON.stringify(tasks));
     Utils.render(todo, tasks.length);
