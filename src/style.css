@@ -144,7 +144,7 @@ form > input::placeholder {
 }
 
 .list > form > input[type="text"].input-value {
-  width: 100%;
+  width: 90%;
   margin: 0 10px;
   border: none;
   height: 40px;
