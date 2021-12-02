@@ -181,6 +181,11 @@ form > input::placeholder {
   color: red;
 }
 
+.error {
+  color: red;
+  font-size: 11px;
+}
+
 @keyframes rotate {
   100% {
     -webkit-transform: rotate(360deg);

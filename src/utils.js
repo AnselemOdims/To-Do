@@ -17,7 +17,11 @@ export default class Utils {
   static add() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const todo = document.querySelector('#todo').value;
-    if (todo === '') return;
+    if (todo === '') {
+      document.querySelector('.error').innerText = 'Todo can not be empty';
+      return;
+    }
+    document.querySelector('.error').innerHTML = '';
     Utils.pushControl(tasks, todo);
     localStorage.setItem('tasks', JSON.stringify(tasks));
     Utils.render(todo, tasks.length);
