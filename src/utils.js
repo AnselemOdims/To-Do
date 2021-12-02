@@ -141,8 +141,13 @@ export default class Utils {
    */
   static edit() {
     document.querySelectorAll('.list form input').forEach((input) => {
+      const inputValue = input.value;
       input.addEventListener('change', (e) => {
         e.preventDefault();
+        if (e.target.value === '') {
+          e.target.value = inputValue;
+          return;
+        }
         Utils.change(e.target.dataset.id, e.target.value);
         document.querySelector('.todo-list ul').innerHTML = '';
         Helper.display();
