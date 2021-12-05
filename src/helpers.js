@@ -64,6 +64,7 @@ export default class Helper {
     const item = e.target;
     const parent = item.parentElement;
     const child = parent.children;
+    document.querySelector('.error').innerHTML = '';
     Utils.help('add', item, child[1], child[2].firstElementChild);
     document.querySelector('.todo-list ul').innerHTML = '';
     Helper.display();

@@ -17,6 +17,11 @@ export default class Utils {
   static add() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const todo = document.querySelector('#todo').value;
+    if (todo === '') {
+      document.querySelector('.error').innerText = 'Todo can not be empty';
+      return;
+    }
+    document.querySelector('.error').innerHTML = '';
     Utils.pushControl(tasks, todo);
     localStorage.setItem('tasks', JSON.stringify(tasks));
     Utils.render(todo, tasks.length);
@@ -140,8 +145,13 @@ export default class Utils {
    */
   static edit() {
     document.querySelectorAll('.list form input').forEach((input) => {
+      const inputValue = input.value;
       input.addEventListener('change', (e) => {
         e.preventDefault();
+        if (e.target.value === '') {
+          e.target.value = inputValue;
+          return;
+        }
         Utils.change(e.target.dataset.id, e.target.value);
         document.querySelector('.todo-list ul').innerHTML = '';
         Helper.display();
@@ -186,7 +196,7 @@ export default class Utils {
   static animate(tasks) {
     document.querySelectorAll('li.list').forEach((item) => {
       if (parseInt(item.dataset.id, 10) === tasks.length) item.classList.add('animate-top');
-      setTimeout(() => { item.classList.remove('animate-top'); }, 1100);
+      setTimeout(() => { item.classList.remove('animate-top'); }, 1400);
     });
   }
 }
