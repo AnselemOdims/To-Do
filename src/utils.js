@@ -196,7 +196,7 @@ export default class Utils {
   static animate(tasks) {
     document.querySelectorAll('li.list').forEach((item) => {
       if (parseInt(item.dataset.id, 10) === tasks.length) item.classList.add('animate-top');
-      setTimeout(() => { item.classList.remove('animate-top'); }, 1100);
+      setTimeout(() => { item.classList.remove('animate-top'); }, 1400);
     });
   }
 }
