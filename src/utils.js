@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 import Helper from './helpers.js';
 import Component from './component.js';
+import Drag from './drag.js';
 
 export default class Utils {
   /**
@@ -53,6 +54,7 @@ export default class Utils {
     });
     document.querySelector('.todo-list ul').innerHTML = '';
     Helper.display();
+    Drag.dragFunc();
   }
 
   /**

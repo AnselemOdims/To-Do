@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 import Utils from './utils.js';
+import Drag from './drag.js';
 
 export default class Helper {
   /**
@@ -11,6 +12,7 @@ export default class Helper {
     Utils.clear();
     Helper.checkHandler();
     Helper.handleFocus();
+    Drag.dragFunc();
   }
 
   /**
@@ -53,6 +55,7 @@ export default class Helper {
       e.preventDefault();
       Utils.remove(e, e.currentTarget.dataset.id);
     });
+    Drag.dragFunc();
   }
 
   /**
@@ -66,12 +69,11 @@ export default class Helper {
     const child = parent.children;
     document.querySelector('.error').innerHTML = '';
     Utils.help('add', item, child[1], child[2].firstElementChild);
-    document.querySelector('.todo-list ul').innerHTML = '';
-    Helper.display();
     child[1].addEventListener('click', () => {
       Utils.help('rem', item, child[1], child[2].firstElementChild);
       item.checked = false;
     });
+    Drag.dragFunc();
   }
 
   /**
