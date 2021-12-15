@@ -239,3 +239,7 @@ form > input::placeholder {
     width: 80%;
   }
 }
+
+.list.dragging {
+  border: solid 1px green;
+}
