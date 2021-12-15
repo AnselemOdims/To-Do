@@ -129,6 +129,7 @@ form > input::placeholder {
 .list {
   width: 100%;
   border-bottom: solid 2px var(--neutral-color-1);
+  cursor: move;
 }
 
 .list > img {
