@@ -2,9 +2,9 @@
 
 # To-do 
 
-> To-do is a web app that helps to organize your day to day activities. It lists all the activities that you need to be completed and allows you to mark them as complete or not. It's a minimalistic website built using JavaScript ES6, Webpack and CSS.
+> To-do is a web app that helps to organize your day to day activities. It lists all the activities that you need to be completed and allows you to mark them as complete or not. Tasks can also be dragged and dropped in any position. It's a minimalistic website built using JavaScript ES6, Webpack and CSS.
 
-![screenshot](./src/images/screenshots/todo2.png)
+![screenshot](./src/images/screenshots/Screencast%20from%2012-15-2021%2003%2036%2036%20PM.gif)
 
 Additional description about the project and its features.
 
