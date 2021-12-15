@@ -21,6 +21,7 @@ export default class Drag {
    * @param {HTML ELement} container
    * @param {Number} vertical - the y position of the client
    * @returns element
+   * @memberof Drag
    */
   static getDragElem(container, vertical) {
     const dragElems = [...container.querySelectorAll('li.list:not(.dragging)')];
@@ -36,5 +37,25 @@ export default class Drag {
 
       return closest;
     }, { offset: Number.NEGATIVE_INFINITY }).element;
+  }
+
+  /**
+   * @static
+   * @function dragFunc - handle the drag and drop operation
+   * @memberof Drag
+   */
+  static dragFunc() {
+    Drag.dragStartEnd();
+    const container = document.querySelector('.todo-list ul');
+    container.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const afterElem = Drag.getDragElem(container, e.clientY);
+      const draggable = document.querySelector('.dragging');
+      if (afterElem === undefined || draggable === null) {
+        container.appendChild(draggable);
+      } else {
+        container.insertBefore(draggable, afterElem);
+      }
+    });
   }
 }
