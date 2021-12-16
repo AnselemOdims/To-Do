@@ -45,7 +45,7 @@ a {
 /* Card Styles */
 .main-container {
   background-color: var(--white);
-  margin: 10% auto;
+  margin: 10% auto 5%;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -226,6 +226,18 @@ form > input::placeholder {
   position: relative;
   animation: slide-top ease-out 1.5s;
   border: solid 2px green;
+}
+
+.features {
+  margin: 1% 25%;
+}
+
+.features ul {
+  margin-top: 10px;
+}
+
+.features ul li {
+  padding: 5px 5px 5px 10px;
 }
 
 @media (max-width: 480px) {
