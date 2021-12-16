@@ -2,6 +2,7 @@ import './style.css';
 import Helper from './helpers.js';
 import Utils from './utils.js';
 import Drag from './drag.js';
+import featDisplay from './features.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   Helper.display();
@@ -13,4 +14,5 @@ window.addEventListener('DOMContentLoaded', () => {
     e.target.classList.add('rotate');
     setTimeout(() => { e.target.classList.remove('rotate'); }, 1000);
   });
+  featDisplay();
 });
