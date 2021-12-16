@@ -2,7 +2,7 @@ import './style.css';
 import Helper from './helpers.js';
 import Utils from './utils.js';
 import Drag from './drag.js';
-import featDisplay from './features.js'
+import featDisplay from './features.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   Helper.display();
